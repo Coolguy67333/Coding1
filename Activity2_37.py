@@ -11,7 +11,7 @@ lbl2 = Label(frame, text = "Email ID", bg='#3895D3', fg = 'white', width = 12)
 lbl3 = Label(frame, text = "Enter Password", bg='#3895D3', fg = 'white', width = 12)
 
 name_entry = Entry(frame)
-email_entry = Entry = Entry(frame)
+email_entry = Entry(frame)
 pass_entry = Entry(frame, show="*")
 
 def display():

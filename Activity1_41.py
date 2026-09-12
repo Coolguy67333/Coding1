@@ -1,117 +1,40 @@
-from tkinter import*
-from tkinter import messagebox
-from PIL import Image, ImageTk
+import tkinter as tk
+from tkinter import ttk, messagebox
 
-root = Tk()
-root.title("Denomination Calulator")
-root.configure(bg="light green")
-root.geometry("650x400")
+class ResturantOrderManagment:
+    def __init(self, root):
+        self.root = root
+        self.root.title("Resturant Managemnt App")
 
-upload = Image.open("app_img.jpg")
-upload = upload.resize((300, 300))
-image = ImageTk.PhotoImage(upload)
+        self.menu_items = {
+            "FRIES MEAL":2,
+            "LUNCH MEAL":2,
+            "BURGER MEAL":3,
+            "PIZZA MEAL":4,
+            "DRINKS":1        }
 
-label = Label(root, image=image, bg = "light green")
-label.place(x=180, y=20)
+        self.exchange_rate = 82
+        self.setup_background(root)
 
-label1 = Label(
-    root,
-    text="Hey User! Welcome to the denomination Application.",
-    bg ="light green"
-)
-label1.place(relx=0.5, y=340, anchor=CENTER)
+        frame = ttk.frame(root)
+        frame.place(relx=0.5, anchor=tk.CENTER)
 
+        ttk.Label(
+            frame,
+            text="Resturant Order Management"
+            font=("Times New Roman", 20, "bold")
+        ).grid(row=0, columspan = 3, padx=10, pady=10)
 
-def msg():
-    Msbox = messagebox.showinfo(
-        "Alert",
-        "Do you want to calculate the denomination count?"
-    )
-    if Msbox == "ok":
-        topwin()
+        self.menu_labels = {}
 
+        self.menu_quantities = {}
 
-button1 = Button(
-    root,
-    text="Lets get started!",
-    command=msg,
-    bg="brown",
-    fg="white"
-)
-button1.place(x=260, y=360)
+        for i, (item, price) in enumerate(self.menu_items.items(), start=1)
 
-def topwin():
-    top = Toplevel()
-    top.title("Denomination Calculator")
-    top.configure(bg="light grey")
-    top.geometry("600x350+50+50")
-
-    label = Label(top, text="Enter total amount", bg="light grey")
-    entry = Entry(top)
-
-    lbl = Label(top, text="2000", bg="light grey")
-    entry = Entry(top)
-
-    lbl - Label(
-        top,
-        text="Here are number of notes for each denomination",
-        bg="light grey"
-    )
-
-    l1 = Label(top, text="2000", bg="light grey")
-    l2 = Label(top, text="500", bg="light grey")
-    l3 = Label(top, text="100", bg="light grey")
-
-    t1 = Entry(top)
-    t2 = Entry(top)
-    t3 = Entry(top)
-
-    def calculator():
-        try:
-            amount = int(entry.get())
-
-            note2000 = amount // 2000
-            amount %= 2000
-
-            note500 = amount // 500
-            amount %= 500
-
-            note100 = amount // 100
-
-            t1.delete(0, END)
-            t2.delete(0, END)
-            t3.delete(0, END)
-
-            t1.insert(END, str(note2000))
-            t2.insert(END, str(note500))
-            t3.insert(END, str(note100))
-
-        except ValueError:
-            messagebox.showerror("Error", "Please enter a valid Number")
-
-    btn = Button(
-        top,
-        text="Calculate",
-        command=calculator,
-        bg="brown"
-        fg="white"
-    )
-    
-
-
-    label.place(x=230, y=50)
-    entry.place(x = 200, y = 80)
-    btn.place(x = 240, y = 120)
-
-
-    lbl.place(x = 140, y = 170)
-
-    l1.place(x=180, y=200)
-    l2.place(x=180, y=230)
-    l3.place(x=180, y=260)
-
-    t1.place(x=270, y=200)
-    t2.place(x=270, y=230)
-    t3.place(x=270, y=260)
-
-    top.mainloop()
+            label = ttk.Label(
+                frame,
+                text=f"{item} (${price})"
+                font=("Times New Roman", 12)
+            )
+            label 
+                
